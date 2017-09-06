@@ -72,6 +72,10 @@ chmod +x $TEMP_DIR/auth-hook.sh
 echo "installing letsencrypt client …"
 git clone https://github.com/letsencrypt/letsencrypt ${LETSENCRYPT_PATH} || exit 1
 
+# install os packages as root
+echo "installing os packages"
+sudo ${LETSENCRYPT_PATH}/letsencrypt-auto --os-packages-only
+
 # create the certificate
 echo "requesting certificate"
 ${LETSENCRYPT_PATH}/letsencrypt-auto \
